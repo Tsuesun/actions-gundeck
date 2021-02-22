@@ -1,0 +1,36 @@
+name: gundeck
+description: runs a rundeck job using gundeck
+author: Benjamin Nørgaard
+inputs:
+  ca-cert: 
+    description: MTLS ca cert
+    required: true
+  client-cert:
+    description: MTLS client cert
+    required: true
+  client-key:
+    description: MTLS client key
+    required: true
+  host:
+    description: Rundeck host
+    required: true
+    default: https://sonar.ts.sv
+  job:
+    description: Rundeck job
+    required: true
+  options:
+    description: Rundeck job options eg `-stackname somestack`
+    required: false
+  project:
+    description: Rundeck project
+    required: true
+  token:
+    description: Sonarqube access token
+    required: true
+  docker-image:
+    description: dockerimage used to run rundeck
+    required: true
+    default: eu.gcr.io/tradeshift-public/gundeck-action:1.0.0
+runs:
+  using: node12
+  main: dist/index.js
